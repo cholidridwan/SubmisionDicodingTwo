@@ -1,7 +1,7 @@
 package com.example.aleph.trialsubmisiontwo
 
-interface MainView {
+interface MatchView {
     fun showLoading()
     fun hideLoading()
-    fun showTeamList(data: List<Team>)
+    fun showMatchList(data: List<Team>)
 }

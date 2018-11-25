@@ -10,9 +10,8 @@ import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import com.example.aleph.trialsubmisiontwo.R.id.team_badge
 import com.example.aleph.trialsubmisiontwo.R.id.team_name
-import com.example.aleph.trialsubmisiontwo.Team
 
-class MainAdapter(private val teams: List<Team>): RecyclerView.Adapter<TeamViewHolder>() {
+class MatchAdapter(private val teams: List<Team>): RecyclerView.Adapter<TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         return TeamViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
