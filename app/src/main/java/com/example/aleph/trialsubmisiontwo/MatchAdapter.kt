@@ -1,6 +1,7 @@
 package com.example.aleph.trialsubmisiontwo
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,17 +12,17 @@ import org.jetbrains.anko.*
 import com.example.aleph.trialsubmisiontwo.R.id.team_badge
 import com.example.aleph.trialsubmisiontwo.R.id.team_name
 
-class MatchAdapter(private val teams: List<Team>): RecyclerView.Adapter<TeamViewHolder>() {
+class MatchAdapter(private val events: List<Team>): RecyclerView.Adapter<TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         return TeamViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
-        holder.bindItem(teams[position])
+        holder.bindItem(events[position])
     }
 
-    override fun getItemCount(): Int = teams.size
+    override fun getItemCount(): Int = events.size
 
 }
 
@@ -58,8 +59,13 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
     private val teamBadge: ImageView = view.find(team_badge)
     private val teamName: TextView = view.find(team_name)
 
-    fun bindItem(teams: Team) {
-        Picasso.get().load(teams.teamBadge).into(teamBadge)
-        teamName.text = teams.teamName
+    fun bindItem(events: Team) {
+        //Picasso.get().load(teams.teamBadge).into(teamBadge)
+        teamName.text = events.teamName
+
+        teamName.setOnClickListener {
+            //listener(items)
+            Log.d("#########::", events.intAwayScore)
+        }
     }
 }

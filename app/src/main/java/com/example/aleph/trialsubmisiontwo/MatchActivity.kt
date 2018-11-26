@@ -18,8 +18,7 @@ class MatchActivity : AppCompatActivity(), MatchView {
     private lateinit var listMatch: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
-    //private lateinit var spinner: Spinner
-    private var matchs: MutableList<Team> = mutableListOf()
+    private var teams: MutableList<Team> = mutableListOf()
     private lateinit var presenter: MatchPresenter
     private lateinit var adapter: MatchAdapter
     private lateinit var leagueName: String
@@ -33,7 +32,14 @@ class MatchActivity : AppCompatActivity(), MatchView {
         var  typeOfMatch = getIntent().getStringExtra("typeOfMatch");
         if (typeOfMatch != "") {
             //throw new IllegalStateException("field " + INTENT_USER_ID + " missing in Intent");
-            Toast.makeText(this, typeOfMatch, Toast.LENGTH_LONG).show()
+
+            if(typeOfMatch == "last match"){
+                leagueName = "eventspastleague.php"
+            }else{
+                leagueName = "eventsnextleague.php"
+            }
+
+            Toast.makeText(this, leagueName, Toast.LENGTH_LONG).show()
         }
 
         linearLayout {
@@ -68,27 +74,14 @@ class MatchActivity : AppCompatActivity(), MatchView {
             }
         }
 
-//        val spinnerItems = resources.getStringArray(league)
-//        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
-//        spinner.adapter = spinnerAdapter
-
-        adapter = MatchAdapter(matchs)
+        adapter = MatchAdapter(teams)
         listMatch.adapter = adapter
 
         val request = ApiRepository()
         val gson = Gson()
         presenter = MatchPresenter(this, request, gson)
-        leagueName = "English Premier League"
+        //leagueName = "English Premier League"
         presenter.getMatchList(leagueName)
-
-//        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-//                leagueName = spinner.selectedItem.toString()
-//                presenter.getMatchList(leagueName)
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>) {}
-//        }
 
         swipeRefresh.onRefresh {
             presenter.getMatchList(leagueName)
@@ -107,8 +100,8 @@ class MatchActivity : AppCompatActivity(), MatchView {
 
     override fun showMatchList(data: List<Team>) {
         swipeRefresh.isRefreshing = false
-        matchs.clear()
-        matchs.addAll(data)
+        teams.clear()
+        teams.addAll(data)
         adapter.notifyDataSetChanged()
     }
 

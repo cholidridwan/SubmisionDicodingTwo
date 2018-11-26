@@ -1,5 +1,6 @@
 package com.example.aleph.trialsubmisiontwo
 
+import android.util.Log
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -17,9 +18,11 @@ class MatchPresenter(private val view: MatchView,
                 TeamResponse::class.java
             )
 
+            Log.e("###########::", TheSportDBApi.getMatchs(league))
+
             uiThread {
                 view.hideLoading()
-                view.showMatchList(data.teams)
+                view.showMatchList(data.events)
             }
         }
     }
