@@ -74,8 +74,12 @@ class MatchActivity : AppCompatActivity(), MatchView {
             }
         }
 
-        adapter = MatchAdapter(teams)
+        adapter = MatchAdapter(this, teams){
+            val toast = Toast.makeText(applicationContext, "tes", Toast.LENGTH_SHORT)
+            toast.show()
+        }
         listMatch.adapter = adapter
+
 
         val request = ApiRepository()
         val gson = Gson()
