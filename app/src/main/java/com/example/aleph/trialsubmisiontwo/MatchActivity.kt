@@ -1,6 +1,7 @@
 package com.example.aleph.trialsubmisiontwo
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
@@ -75,11 +76,16 @@ class MatchActivity : AppCompatActivity(), MatchView {
         }
 
         adapter = MatchAdapter(this, teams){
-            val toast = Toast.makeText(applicationContext, "tes", Toast.LENGTH_SHORT)
-            toast.show()
+//            val toast = Toast.makeText(applicationContext, "tes", Toast.LENGTH_SHORT)
+//            toast.show()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            // To pass any data to next activity
+//            intent.putExtra("typeOfMatch", "idTeam:007")
+//            // start your next activity
+//            startActivity(intent)
         }
-        listMatch.adapter = adapter
 
+        listMatch.adapter = adapter
 
         val request = ApiRepository()
         val gson = Gson()

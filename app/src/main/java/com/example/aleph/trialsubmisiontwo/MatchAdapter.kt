@@ -1,6 +1,7 @@
 package com.example.aleph.trialsubmisiontwo
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
@@ -24,7 +25,14 @@ class MatchAdapter(private val context: Context, private val events: List<Team>,
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         //holder.bindItem(events[position])
-        holder.bindItem(events[position], listener)
+        holder.bindItem(events[position], listener, context)
+//        holder.itemView.setOnClickListener(){
+//            val intent = Intent(context, DetailActivity::class.java)
+//            // To pass any data to next activity
+//            intent.putExtra("typeOfMatch", '')
+//            // start your next activity
+//            this.context.startActivity(intent)
+//        }
     }
 
     override fun getItemCount(): Int = events.size
@@ -74,7 +82,7 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
         }
     }*/
 
-    fun bindItem(events: Team,  listener: (Team) -> Unit) {
+    fun bindItem(events: Team,  listener: (Team) -> Unit, context: Context) {
         //Picasso.get().load(teams.teamBadge).into(teamBadge)
         teamName.text = events.teamName
 
@@ -82,6 +90,12 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
             //listener(items)
             Log.d("#########::", events.intAwayScore)
             listener(events)
+
+            val intent = Intent(context, DetailActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("typeOfMatch", events.strHomeTeam)
+            // start your next activity
+            context.startActivity(intent)
         }
     }
 //
