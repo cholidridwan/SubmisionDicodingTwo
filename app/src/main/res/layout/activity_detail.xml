@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout android:orientation="horizontal"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,4 +7,45 @@
         android:layout_height="match_parent"
         tools:context=".DetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout android:layout_weight="1" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent">
+
+        <ImageView android:id="@+id/homeImg"
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"/>
+        <TextView android:id="@+id/homeNameTxt"
+                  android:hint="name here"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/homeScoreTxt"
+                  android:hint="score here"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/homeKeeperTxt"
+                android:hint="keeper here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout android:layout_weight="1" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent">
+
+        <ImageView android:id="@+id/awayImg"
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"/>
+        <TextView android:id="@+id/awayNameTxt"
+                  android:hint="name here"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/awayScoreTxt"
+                  android:hint="score here"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/awayKeeperTxt"
+                android:hint="keeper here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

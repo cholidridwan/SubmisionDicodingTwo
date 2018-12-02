@@ -93,7 +93,18 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
             val intent = Intent(context, DetailActivity::class.java)
             // To pass any data to next activity
-            intent.putExtra("typeOfMatch", events.strHomeTeam)
+
+            intent.putExtra("homeId", events.idHomeTeam)
+            intent.putExtra("awayId", events.idAwayTeam)
+
+            intent.putExtra("homeName", events.strHomeTeam)
+            intent.putExtra("awayName", events.strAwayTeam)
+
+            intent.putExtra("homeScore", events.intHomeScore)
+            intent.putExtra("awayScore", events.intAwayScore)
+
+            intent.putExtra("homeKeeper", events.strHomeLineupGoalkeeper)
+            intent.putExtra("awayKeeper", events.strAwayLineupGoalkeeper)
             // start your next activity
             context.startActivity(intent)
         }

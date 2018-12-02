@@ -19,6 +19,12 @@ data class Team(
     @SerializedName("strEvent")
     var teamName: String? = null,
 
+    @SerializedName("idHomeTeam")
+    var idHomeTeam: String? = null,
+
+    @SerializedName("idAwayTeam")
+    var idAwayTeam: String? = null,
+
     @SerializedName("strHomeTeam")
     var strHomeTeam: String? = null,
 
@@ -29,7 +35,13 @@ data class Team(
     var intHomeScore: String? = null,
 
     @SerializedName("intAwayScore")
-    var intAwayScore: String? = null
+    var intAwayScore: String? = null,
+
+    @SerializedName("strHomeLineupGoalkeeper")
+    var strHomeLineupGoalkeeper: String? = null,
+
+    @SerializedName("strAwayLineupGoalkeeper")
+    var strAwayLineupGoalkeeper: String? = null
 
 )
 
